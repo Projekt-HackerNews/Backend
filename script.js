@@ -10,44 +10,42 @@ async function fetchNews(page) {    // Funkcja do pobierania newsów z danej str
     const endIndex = startIndex + maxNewsPerPage;
 
     const newsIds = data.slice(startIndex, endIndex);    // Wybranie ID newsów dla danej strony
-
     
     const newsPromises = newsIds.map(newsId => fetch(`${apiUrl}item/${newsId}.json`).then(response => response.json()));   // Pobranie szczegółowych danych dla każdego ID newsa
     const newsList = await Promise.all(newsPromises);
 
     return newsList;
 }
-
-
 function displayNews(newsList) {   // Funkcja do wyświetlania newsów na stronie
     const newsListContainer = document.getElementById('news-list');
-    
     newsListContainer.innerHTML = '';   // Wyczyszczenie aktualnej listy
-
-    // Dodanie każdego newsa do listy
-    newsList.forEach(news => {
+    
+    newsList.forEach(news => {// Dodanie każdego newsa do listy
         const listItem = document.createElement('li');
         listItem.innerHTML = `<a href="${news.url}" target="_blank">${news.title}</a>`;
         newsListContainer.appendChild(listItem);
     });
 }
-
-// Funkcja do ładowania kolejnych newsów
-async function loadMoreNews() {
+async function loadMoreNews() {// Funkcja do ładowania kolejnych newsów
     currentPage++;    // Zwiększenie numeru strony
     const moreNews = await fetchNews(currentPage);    // Pobranie kolejnych newsów
     displayNews(moreNews);    // Wyświetlenie nowych newsów
 }
-
-// Inicjalizacja strony
-async function init() {
-    const initialNews = await fetchNews(currentPage);   // Pobranie i wyświetlenie początkowych newsów
+async function init() {// Inicjalizacja strony
+    const initialNews = await fetchNews(currentPage);// Pobranie i wyświetlenie początkowych newsów
     displayNews(initialNews);
 
-    // Dodanie obsługi kliknięcia przycisku "Load More"
-    const loadMoreButton = document.getElementById('load-more');
+    const loadMoreButton = document.getElementById('load-more');// Dodanie obsługi kliknięcia przycisku "Load More"
     loadMoreButton.addEventListener('click', loadMoreNews);
 }
-
-// Wywołanie inicjalizacji po załadowaniu strony
-init();
+function displayNews(newsList) {   // Funkcja do wyświetlania newsów na stronie
+    const newsListContainer = document.getElementById('news-list');
+    newsListContainer.innerHTML = '';   // Wyczyszczenie aktualnej listy
+    
+    newsList.forEach((news, index) => {// Dodanie każdego newsa do listy
+        const newsItem = document.createElement('div');
+        newsItem.innerHTML = `<span>${index + 1}</span>. <a href="${news.url}" target="_blank">${news.title}</a>`;
+        newsListContainer.appendChild(newsItem);
+    });
+}
+init();// Wywołanie inicjalizacji po załadowaniu strony
