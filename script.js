@@ -14,6 +14,7 @@ async function fetchNews(page) {// Funkcja asynchroniczna do pobierania newsów 
 }
 function displayNews(newsList) {// Funkcja do wyświetlania newsów na stronie
     const newsListContainer = document.getElementById('news-list');
+    newsListContainer.innerHTML = '';// Wyczyszczenie aktualnej listy przed dodaniem nowych newsów
     newsList.forEach((news, index) => {
         const newsItem = document.createElement('li');
         newsItem.classList.add('news-item');
