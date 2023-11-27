@@ -59,8 +59,8 @@ async function loadMoreNews() {// Funkcja asynchroniczna do ładowania kolejnych
 function voteUp(index) {// Funkcja do obsługi głosowania
     console.log(`Voted up for news ${index}`);
 }
-function hideNews(newsItem) {// Funkcja do ukrywania newsa
-    newsItem.classList.add('hidden');
+function hideNews(newsItem) {// Funkcja do ukrywania newsa (Komentarz wygenerowany przez chatGPT)
+    newsItem.hidden = true;
 }
 async function init() {// Inicjalizacja strony
     const initialNews = await fetchNews(currentPage);
