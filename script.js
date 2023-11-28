@@ -22,7 +22,10 @@ function displayNews(newsList) {// Funkcja do wyświetlania newsów na stronie
         const voteButton = document.createElement('span');// Przycisk do głosowania
         voteButton.classList.add('vote-up');
         voteButton.innerHTML = `<span>${index + 1}</span> ▲`;
-        voteButton.addEventListener('click', () => voteUp(index + 1));
+        voteButton.addEventListener('click', () => {
+            voteUp(index + 1);
+            highlightVoteButton(voteButton); // Dodanie zmiany koloru trójkąta na zielony
+        });
 
         const hideButton = document.createElement('span');// Przycisk do ukrywania newsa
         hideButton.classList.add('hide-button');
@@ -68,5 +71,8 @@ async function init() {// Inicjalizacja strony
 
     const loadMoreButton = document.getElementById('load-more');
     loadMoreButton.addEventListener('click', loadMoreNews);
+}
+function highlightVoteButton(voteButton) {// Zmiana koloru trójkąta na zielony
+    voteButton.style.color = 'green';
 }
 init();// Wywołanie inicjalizacji po załadowaniu strony
