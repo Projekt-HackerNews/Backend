@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XD News</title>
+    <link rel="stylesheet" href="styl.css">
+    <script src="top.js"></script>
+    <script src="input.js"></script>
+</head>
+    <body>        
+        <table id="hnmain" border="0" cellpadding="0" cellspacing="0" width="100%" bgcolor="#f6f6ef">
+            <tr>
+                <td bgcolor="#ff6600">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                        <tr>
+                            <td style="width:18px;padding-right:4px">
+                                <a href="https://www.google.pl/maps/place/Krzemowa+21,+80-041+Gda%C5%84sk/@54.3268314,18.6225059,17z/data=!3m1!4b1!4m6!3m5!1s0x46fd73ee661e67b3:0x2a0767dcfd48068c!8m2!3d54.3268314!4d18.6225059!16s%2Fg%2F11c5p6d26m?entry=ttu"><img src="y18.svg" width="18" height="18" style="border:1px white solid; display:block"></a>
+                            </td>
+                            <td style="line-height:12pt; height:10px;">
+                                <span class="pagetop">
+                                    <b class="hnname"><a href="news">Hacker News</a></b>
+                                    <a href="index.html">new</a> | <a href="front">past</a> | <a href="newcomments">comments</a> | <a href="ask">ask</a> | <a href="show">show</a> | <a href="jobs">jobs</a> | <a href="submit">submit</a> | <a href="/top.html">top</a> | <input type="number" id="showPosts"/> <button onclick="showPosts()">Show Posts</button>
+                                </span>
+                            </td>
+                            <td style="text-align:right;padding-right:4px;">
+                                <span class="pagetop"><a href="login?goto=news">login</a></span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <ul id="news-list"></ul>
+                    <button id="load-more">Load More</button> 
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>
