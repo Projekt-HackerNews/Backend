@@ -1,5 +1,3 @@
-//dane z api
-const apiUrl = 'https://hacker-news.firebaseio.com/v0/';
 fetch(apiUrl)
   .then(response => response.json())
   .then(data => {
