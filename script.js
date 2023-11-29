@@ -6,16 +6,13 @@ let startIndex = 0;// Obliczenie zakresu indeksów dla danej strony
 
     async function fetchNews(page) {// Funkcja asynchroniczna do pobierania newsów z danej strony
         const response = await fetch(`${apiUrl}newstories.json`);// Pobranie listy ID najnowszych newsów
-        const data = await response.json(); 
+        const data = await response.json();    
         console.log(startIndex);
-     
         let endIndex = startIndex + page;  
         console.log(endIndex); 
-     
         const newsIds = data.slice(startIndex, endIndex);// Wybranie ID newsów dla danej strony    
         const newsPromises = newsIds.map(newsId => fetch(`${apiUrl}item/${newsId}.json`).then(response => response.json()));// Pobranie szczegółowych danych dla każdego ID newsa    
         const newsList = await Promise.all(newsPromises);// Oczekiwanie na zakończenie wszystkich żądań
-     
         startIndex = endIndex;
         return newsList;
     }
