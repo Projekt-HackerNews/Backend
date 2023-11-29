@@ -26,7 +26,7 @@ const fetchBestStories = async () => {
 
         const newsTitle = document.createElement('div');
         newsTitle.setAttribute('id', 'news-title');
-        newsTitle.innerHTML = `<a href="${story.url}" target="_blank">${story.title}</a>`;
+        newsTitle.innerHTML = `<span>${index + 1}</span>. <a href="${story.url}" target="_blank">${story.title}</a>`;
 
         const newsMeta = document.createElement('div');
         newsMeta.setAttribute('id', 'news-meta');
