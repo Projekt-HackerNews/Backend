@@ -86,10 +86,18 @@ let startIndex = 0;// Obliczenie zakresu indeksów dla danej strony
         loadMoreButton.addEventListener('click', loadMoreNews);
     }
     const showPosts = () => {
-        const postsInput = document.getElementById('posts-input');
+        const postsInput = document.getElementById('showPosts');
+        const inputValue = postsInput.value;
         const postsCount = parseInt(postsInput.value, 10);
-    
-        if (isNaN(postsCount) || postsCount <= 0) {
+        const parsedInputValue = parseInt(inputValue);
+
+        if (/^\d+$/.test(inputValue)) {
+            console.log('Wprowadzono cyfry!');
+        }
+        else if(typeof(parsedInputValue)=="number" && isNaN(parsedInputValue)){
+            console.log("Nie wprowadzono cyfry!");
+        }
+        else if (isNaN(postsCount) || postsCount <= 0) {
             alert('Please enter a valid number greater than 0.');
             return;
         }
